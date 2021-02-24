@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <!--无参构造实例化 -->
+  <!--  <bean id="UserDao" class="com.blb.Impl.UserImpl" ></bean>-->
+   <!--工厂静态方法实例化 -->
+  <!--  <bean id="UserDao" class="com.blb.factoy.UserFactory" factory-method="getUserFactory"></bean>-->
+   <!--工厂实例方法实例化 -->
+  <bean id="User" class="com.blb.factoy.UserFa"></bean>
+  <bean id="UserDao" factory-bean="User" factory-method="getUserFactory"></bean>
+
+</beans>
