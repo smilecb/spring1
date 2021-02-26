@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
   <!--无参构造实例化 -->
-  <!--  <bean id="UserDao" class="com.blb.Impl.UserImpl" ></bean>-->
+<!--    <bean id="UserDao" class="com.blb.Impl.UserImpl" ></bean>-->
    <!--工厂静态方法实例化 -->
   <!--  <bean id="UserDao" class="com.blb.factoy.UserFactory" factory-method="getUserFactory"></bean>-->
    <!--工厂实例方法实例化 -->
-  <bean id="User" class="com.blb.factoy.UserFa"></bean>
-  <bean id="UserDao" factory-bean="User" factory-method="getUserFactory"></bean>
+<!--  <bean id="User" class="com.blb.factoy.UserFa"></bean>-->
+
+<!--    set注入-->
+<!--    <bean id="UserDaoImpl" class="com.blb.Impl.UserDaoImpl"></bean>-->
+    <!-- <bean id="UserSeriver" class="com.blb.seriver.UserSeriver">-->
+    <!--   <property name="userDaolmpl" ref="UserDaoImpl"></property>-->
+    <!-- </bean>-->
+
+<!--    p注入-->
+<!-- <bean id="UserDaoImpl" class="com.blb.Impl.UserDaoImpl"></bean>-->
+<!--    <bean id="UserSeriver" class="com.blb.seriver.UserSeriver" p:userDaolmpl-ref="UserDaoImpl"></bean>-->
+
+<!--    bean方法注入-->
+<!--    <bean id="UserDaoImpl" class="com.blb.Impl.UserDaoImpl"></bean>-->
+<!--    <bean id="UserSeriver" class="com.blb.seriver.UserSeriver">-->
+<!--        <constructor-arg name="userDaoImpl" ref="UserDaoImpl"></constructor-arg>-->
+<!--    </bean>-->
+<!--    参数注入-->
+    <bean id="UserDaoImpl" class="com.blb.Impl.UserDaoImpl">
+        <property name="age" value="19"></property>
+        <property name="name" value="张三"></property>
+        <property name="l">
+            <list>
+             <ref bean="stu1"></ref>
+            </list>
+        </property>
+    </bean>
+        <bean id="UserSeriver" class="com.blb.seriver.UserSeriver">
+            <constructor-arg name="userDaoImpl" ref="UserDaoImpl"></constructor-arg>
+        </bean>
+    
+    <bean id="stu1" class="com.blb.entity.Student">
+        <property name="name" value="张三"></property>
+        <property name="age" value="12"></property>
+    </bean>
 
 </beans>

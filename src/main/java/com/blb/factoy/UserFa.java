@@ -1,10 +1,11 @@
 package com.blb.factoy;
 
-import com.blb.Impl.UserImpl;
-import com.blb.UserDao.User;
+
+import com.blb.Dao.UserDao;
+import com.blb.Impl.UserDaoImpl;
 
 public class UserFa {
-  public User getUserFactory(){
-      return new UserImpl();
+  public UserDao getUserFactory(){
+      return new UserDaoImpl();
   }
 }
